@@ -24,6 +24,7 @@ body{
 }
 #navBtn:hover {
     cursor: pointer;
+    background: #EF4836;
 }
 
 #navBtn div{
@@ -244,9 +245,6 @@ section .Btn_q {
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid #ABB7B7;
-    
-    transition: border-top .2s ease-in-out;
-    
     margin-top: 20px;
 }
 
@@ -259,18 +257,13 @@ section .answer {
     display: none;
 }
 
-#toggle_q1:checked ~ div.Btn_q {
+section input[type=checkbox]:checked ~ label div.Btn_q {
     border-top: 0;
     border-bottom: 10px solid #ABB7B7;
 }
-#toggle_q1:checked ~ div.answer {
-    display: block;
+section input[type=checkbox]:checked ~ label div.Btn_q:hover {
+    border-bottom: 10px solid #6C7A89;
 }
-
-
-#toggle_q2:checked ~ div.answer {
-    display: block;
-}
-#toggle_q3:checked ~ div.answer {
+section input[type=checkbox]:checked ~ div.answer {
     display: block;
 }
