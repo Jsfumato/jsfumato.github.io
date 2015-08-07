@@ -1,0 +1,139 @@
+*{
+    font-family: 'Malgun Gothic', '맑은 고딕', DotumChe, 돋움체, 
+    font-style : normal;
+    font-weight : 100;
+}
+
+header {
+    width : 100%;
+    height: 400px;
+    background-color: #F5D76E;
+    text-transform: capitalize;
+    
+    transition : background 1s ease-in-out;
+}
+
+header:hover {
+    background-color: #D64541;
+}
+
+.outer {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.inner{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+h1 {
+    padding: 5vmin;
+    color : #2c3e50;
+    font-size : 20vmin;
+    font-style : normal;
+    font-weight : 100;
+    
+    line-height: 20vmin;
+    white-space: normal;
+}
+
+.input_box{
+    padding: 5px 5vmin 5px 5vmin;
+    background-color: #22313F;
+    height: 60px;
+}
+
+.inner_input{
+    width: 100%;
+    vertical-align: middle;
+}
+
+input[type="text"]{
+    width: 85%;
+    height: 25px;
+    
+    border-radius: 10px;
+    color: #AAAAAA;
+    text-align: center;
+    font-size: 2.5vmin;
+}
+
+button[type=button] {
+    width: 12%;
+    background: #6C7A89;
+    border-radius: 20px;
+    color: #EEEEEE;
+    font-size: 2vmin;
+    text-decoration: none;
+    
+    transition : background .2s ease-in-out;
+}
+
+button[type=button]:hover {
+    background: #D2D7D3;
+    text-decoration: none;
+}
+
+button[type=button]:active {
+    background: #E74C3C;
+    text-decoration: none;
+}
+
+.content{
+    padding: 0 10vmin 0 10vmin;
+}
+
+.content h2{
+    font-size: 6vmin;
+    text-shadow: 0.5vmin 0.5vmin 2vmin #333;
+}
+
+.content p{
+    line-height: 4vmin;
+    font-size: 4vmin;
+    text-indent: 3vmin;
+    letter-spacing: 0;
+    word-spacing: 0.6vmin;
+    text-overflow: ellipsis;
+}
+
+.button{
+    border-radius: 10px;
+    margin: 20px;
+    float: left;
+    width: 120px;
+    height : 30px;
+
+    background-color: #3A539B;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+a.button_link{
+    color: #EEEEEE;
+    text-decoration: none;
+}
+
+/*
+
+{color, 
+font-size, 
+font-style, 
+font-weight, 
+text-align,
+vertical-align,
+text-decoration,
+text-transform,
+line-height,
+letter-spacing,
+word-spacing,
+text-overflow,
+text-indent,
+text-shadow,
+white-space
+}*/

@@ -1,0 +1,85 @@
+#header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #2980b9;
+    height: 50px;
+    width: 100%;
+}
+
+#container{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: 100%;
+    background: #ecf0f1;
+}
+
+#lftSideBar{
+    padding: 5px 0 0 5px;;
+    float: left;
+    width: 150px;
+}
+
+#lftSideBar h4{
+    color: #9197a3;
+}
+
+#lftSideBar ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+#lftSideBar ul li.hasNum::after{
+    float: right;
+    margin-right: 10px;
+    content: attr(data-unread);
+    font-size: 12px;
+}
+
+div#content {
+    overflow: hidden;
+    width: 100% - 155px;
+    margin-left: 155px;
+    padding-bottom: 20px;
+}
+
+#main {
+    float: left;
+}
+
+#main div{
+    background: white;
+    width: 600px;
+    height: 200px;
+    border-radius: 3px;
+    margin-top: 20px;
+    
+    border-top: solid 1px #e5e6e9;
+    border-bottom: solid 1px #d0d1d5;
+    border-right: solid 1px #dfe0e4;
+    border-left: solid 1px #dfe0e4;
+}
+
+#advertisement{
+    position: absolute;
+    left: 780px;
+    background: white;
+    width: 200px;
+    height: 800px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+@media (max-width : 1000px){
+    #advertisement{
+        display: none;
+    }
+    #main {
+        width: 100%;
+    }
+    #main div{
+        max-width: 600px;
+        width: 90%;
+    }
+}

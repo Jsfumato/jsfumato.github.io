@@ -22,6 +22,9 @@ body{
     
     transition: background 0.5s ease-in-out;
 }
+#navBtn:hover {
+    cursor: pointer;
+}
 
 #navBtn div{
     width: 80%;
@@ -132,7 +135,7 @@ div.q_num {
     width: 30px;
     background: #EF4836;
     text-align: center;
-    line-height: 35px;
+    line-height: 30px;
     
     font-size: 25px;
     color: white;
@@ -140,6 +143,9 @@ div.q_num {
     padding: 5px;
     margin-bottom: 10px;
     border-radius: 5px;
+    
+    font-family: monospace;
+    font-weight: bold;
 }
 
 div.a_num {
@@ -147,7 +153,7 @@ div.a_num {
     width: 30px;
     background: #2c3e50;
     text-align: center;
-    line-height: 35px;
+    line-height: 30px;
 
     font-size: 25px;
     color: white;
@@ -155,6 +161,9 @@ div.a_num {
     padding: 5px;
     margin-bottom: 10px;
     border-radius: 5px;
+    
+    font-family: monospace;
+    font-weight: bold;
 }
 
 h1 {
@@ -218,7 +227,6 @@ div.answer::before {
 }
 
 
-
 section .question, .answer {
     text-align: left;
 }
@@ -235,18 +243,31 @@ section .Btn_q {
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid gray;
+    border-top: 10px solid #ABB7B7;
+    
+    transition: border-top .2s ease-in-out;
     
     margin-top: 20px;
+}
+
+section .Btn_q:hover {
+    cursor: pointer;
+    border-top: 10px solid #6C7A89;
 }
 
 section .answer {
     display: none;
 }
 
+#toggle_q1:checked ~ div.Btn_q {
+    border-top: 0;
+    border-bottom: 10px solid #ABB7B7;
+}
 #toggle_q1:checked ~ div.answer {
     display: block;
 }
+
+
 #toggle_q2:checked ~ div.answer {
     display: block;
 }
