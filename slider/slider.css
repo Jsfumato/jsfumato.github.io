@@ -1,9 +1,8 @@
-body{
+html, body{
     width: 100%;
-    height: auto;
+    height: 100%;
     
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 #navBtn {
@@ -43,7 +42,7 @@ body{
     visibility: hidden;
 }
 
-#toggle:checked + #container #navBtn {
+#toggle:checked + #navBtn {
     background: #EF4836;
 }
 

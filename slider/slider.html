@@ -10,6 +10,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <title>WEBUI_과제제출 page</title>
     <link rel="stylesheet" type="text/css" href="slider.css">
+    <script type="text/javascript">
+        
+        var currentState;
+        
+        document.onreadystatechange = function () {
+            if (document.readyState !== currentState) {
+                printState();
+            }
+        }
+        
+        var printState = function(){
+            var readyState = document.readyState;
+            currentState = readyState;
+            console.log("readyState : "+readyState);
+        }
+        
+//      DOMContentLoaded 이벤트가 발생하면 "DOMContentLoaded"를 출력
+        document.addEventListener("DOMContentLoaded", function(e){
+            console.log("DOMContentLoaded");
+        });
+        
+//      윈도우의 load 이벤트가 발생하면 "load"문자열 출력
+        window.addEventListener("load", function(e){
+            console.log("load");
+        })
+        
+    </script>
 </head>
     
 <body>
