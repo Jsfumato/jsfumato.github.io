@@ -1,18 +1,103 @@
-#header{
+/*function*/
+.blue {
+    color : #00e
+}
+
+
+/*header*/
+header{
     position: fixed;
     top: 0;
     left: 0;
-    background: #2980b9;
-    height: 50px;
+    background: #3a5795;
+    border-bottom: 1px solid #133783;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
+    height: 42px;
     width: 100%;
+    
+    z-index: 100;
+}
+
+#header{
+    width: 975px;
+    margin: 0 auto;
+}
+
+#header .logo{
+    width: 28px;
+    height: 28px;
+    margin: 7px 3px 7px 7px;
+    position: relative;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.logo img {
+    width: 22px;
+    height: 22px;
+    margin: auto;
+    
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+#header .logo:hover {
+    background-color: #355089;
+    cursor: pointer;
+}
+
+.search {
+    display: inline-block;
+    height: 24px;
+    margin: 9px 0;
+    position: absolute;
+    width: 430px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background: white;
+}
+
+.search input[type=text] {
+    height: 24px;
+    width: 400px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border: none;
+    padding: 2px 8px;
+    box-sizing: border-box;
+    font-size: 13px;
+    color: #101010;
+}
+
+.search div{
+    display: inline-block;
+    height: 16px;
+    width: 24px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border: none;
+    padding: 0 4px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-left: solid 1px #ddd;
+    position: relative;
+    top: 1px;
+}
+
+
+
+
+/*main*/
+body {
+    background-color: #ecf0f1;
 }
 
 #container{
-    position: absolute;
-    top: 50px;
-    left: 0px;
-    width: 100%;
-    background: #ecf0f1;
+    width: 975px;
+    height: auto;
+    background-color: #ecf0f1;
+    margin: 42px auto 0 auto;
 }
 
 #lftSideBar{
@@ -23,11 +108,16 @@
 
 #lftSideBar h4{
     color: #9197a3;
+    font-size: 10px;
 }
 
 #lftSideBar ul{
     list-style: none;
     padding-left: 0;
+}
+
+#lftSideBar ul li{
+    font-size: 14px;
 }
 
 #lftSideBar ul li.hasNum::after{
@@ -44,16 +134,18 @@ div#content {
     padding-bottom: 20px;
 }
 
-#main {
+main {
     float: left;
 }
 
-#main div{
+main .outer{
     background: white;
     width: 600px;
-    height: 200px;
     border-radius: 3px;
     margin-top: 20px;
+    
+    box-sizing: border-box;
+    padding: 10px;
     
     border-top: solid 1px #e5e6e9;
     border-bottom: solid 1px #d0d1d5;
@@ -61,9 +153,60 @@ div#content {
     border-left: solid 1px #dfe0e4;
 }
 
-#advertisement{
+.outer .name{
+    height: 50px;
+    position: relative;
+}
+.name img {
+    width: 50px;
+    height: 50px;
     position: absolute;
-    left: 780px;
+    top: 0;
+    left: 0;
+}
+.name div {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 60px;
+}
+.name div span {
+    display: block;
+}
+.outer .contentBox div:first-child{
+    height: auto;
+    padding: 10px 0;
+}
+
+.outer .contentBox div:nth-child(2){
+    height: 30px;
+}
+.contentBox div:nth-child(2)::before {
+    position: absolute;
+/*    overflow: hidden;*/
+    width: 50%;
+    height: 1px;
+    content: '';
+    background-color: #ddd;
+}
+.contentBox div:nth-child(2){
+}
+
+.outer .button {
+    line-height: 30px;
+    height: 30px;
+}
+.outer .button::before {
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 1px;
+    content: '';
+    background-color: #ddd;
+}
+
+#advertisement{
+    float: right;
     background: white;
     width: 200px;
     height: 800px;
@@ -71,7 +214,7 @@ div#content {
     margin-top: 20px;
 }
 
-@media (max-width : 1000px){
+@media (max-width : 975px){
     #advertisement{
         display: none;
     }
