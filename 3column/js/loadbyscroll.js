@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", function(){
 
 //  스크롤 할 내용이 존재하는 한, 남은 스크롤이 얼마 되지 않을 때, 로드를 한다.
-//    if(scrollLoad.checkScroll()){
-    while(scrollLoad.checkScroll()){
-        scrollLoad.loadByScroll();
-//        async.loadJSON();
+    if(scrollLoad.checkScroll()){
+//    while(scrollLoad.checkScroll()){
+//        scrollLoad.loadByScroll();
+        async.loadJSON();
     }
     
 //  document가 스크롤 될 때, 남은 스크롤 확인 및, 로드 여부 결정
     document.addEventListener("scroll", function(){
         if(scrollLoad.checkScroll()){
-            scrollLoad.loadByScroll();
+//            scrollLoad.loadByScroll();
             async.loadJSON();
         }
     });
