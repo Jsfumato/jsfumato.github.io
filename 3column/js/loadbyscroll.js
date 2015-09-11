@@ -76,7 +76,8 @@ var timeline = {
     init : function(){
         this.arrayTimeline = document.querySelectorAll(".outer");
         console.log(this.arrayTimeline);
-    },
+        console.log(this.index);
+    }.bind(this),
     
     getTimeline : function(){
         var asdf = this.arrayTimeline
