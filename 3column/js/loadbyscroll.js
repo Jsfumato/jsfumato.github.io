@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function(){
     document.addEventListener("keyup", function(e){
         console.log(e.keyCode);
         var search = document.querySelector(".searchText");
+        console.log(search);
         if(e.altKey === true && e.keyCode === 83){
             console.log("focused");
             search.focus();
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function(){
 //      j를 눌렀을 때
         if(e.keyCode === 74){
             var curdiv = timeline.getTimeline();
+            console.log(curdiv);
             curdiv.focus();
             if(timeline.index > 0){
                 timeline.index--;
@@ -35,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
 //      k를 눌렀을 때        
         if(e.keyCode === 75){
             var curdiv = timeline.getTimeline();
+            console.log(curdiv);
             curdiv.focus();
             if(timeline.index < timeline.arrayTimeline.length){
                 timeline.index++;
