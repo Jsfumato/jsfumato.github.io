@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-//  스크롤 할 내용이 존재하는 한, 남은 스크롤이 얼마 되지 않을 때, 로드를 한다.
+//  처음 페이지 로드 때, JSON file 로드를 한다.
     if(scrollLoad.checkScroll()){
 //    while(scrollLoad.checkScroll()){
 //        scrollLoad.loadByScroll();
@@ -64,7 +64,8 @@ var async = {
                 var data = JSON.parse(this.responseText);
                 for(var i = 0, item; item = data[i]; i++){
                     console.log(item);
-                    scrollLoad.makeDOM(item);
+                    var dom = scrollLoad.makeDOM(item);
+                    document.querySelector("main").appendChild(dom);
                 }
                 async.index++;
             }else if(async.index > 5){
@@ -107,6 +108,7 @@ var scrollLoad = {
 //};
     
     makeDOM : function(item){
+        console.log("makeDOM by item");
 
         var outer = document.createElement("div");
         outer.classList.add("outer");
