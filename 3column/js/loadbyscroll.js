@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
 
 //  스크롤 할 내용이 존재하는 한, 남은 스크롤이 얼마 되지 않을 때, 로드를 한다.
-    while(scrollLoad.checkScroll()){
+    if(scrollLoad.checkScroll()){
 //        scrollLoad.loadByScroll();
         json.loadJSON('json/page1.json');
     }
