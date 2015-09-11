@@ -64,9 +64,12 @@ var async = {
                 var data = JSON.parse(this.responseText);
                 for(var i = 0, item; item = data[i]; i++){
                     console.log(item);
+                    scrollLoad.makeDOM(item);
                 }
                 async.index++;
-            };
+            }else if(async.index > 5){
+                console.log("NO MORE JSON FILE");
+            }
         };
         xhr.send(null);
     }
@@ -103,7 +106,7 @@ var scrollLoad = {
     },
 //};
     
-    makeDOM : function(){
+    makeDOM : function(item){
 
         var outer = document.createElement("div");
         outer.classList.add("outer");
@@ -114,7 +117,7 @@ var scrollLoad = {
         name.appendChild(profile);
         var context = document.createElement("div");
         var userName = document.createElement("span");
-        userName.textContent = "USER";
+        userName.textContent = item.name;
         var date = document.createElement("span");
         var now = new Date;
         date.textContent = 
@@ -126,16 +129,16 @@ var scrollLoad = {
         var contentBox = document.createElement("div");
         contentBox.classList.add("contentBox");
         var content = document.createElement("div");
-        content.textContent = "자동생성 : endless scroll";
+        content.textContent = item.context;
         var interaction = document.createElement("div");
         var showLike = document.createElement("span");
-        showLike.setAttribute("data-like","0");
+        showLike.setAttribute("data-like", item.like);
         showLike.textContent = "좋아요 " + showLike.getAttribute("data-like") +"개";
         showLike.classList.add("showLike");
         var showReply = document.createElement("span");
-        showReply.textContent = "댓글 " + 0 +"개"
+        showReply.textContent = "댓글 " + item.reply +"개"
         var showShare = document.createElement("span");
-        showShare.textContent = "공유 " + 0 +"개"
+        showShare.textContent = "공유 " + item.share +"개"
         interaction.appendChild(showLike);
         interaction.appendChild(showReply);
         interaction.appendChild(showShare);
@@ -143,6 +146,9 @@ var scrollLoad = {
         var like = document.createElement("span");
         like.textContent = "좋아요";
         like.classList.add("likeBtn");
+        if(item.isLike){
+            like.classList.add("blue");
+        }
         var reply = document.createElement("span");
         reply.textContent = "댓글달기";
         reply.classList.add("replyBtn");
