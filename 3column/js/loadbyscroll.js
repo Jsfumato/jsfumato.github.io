@@ -3,14 +3,13 @@ document.addEventListener("DOMContentLoaded", function(){
 //  처음 페이지 로드 때, JSON file 로드를 한다.
     if(scrollLoad.checkScroll()){
         async.loadJSON();
-//        timeline.init();
+        timeline.init();
     }
     
 //  document가 스크롤 될 때, 남은 스크롤 확인 및, 로드 여부 결정
     document.addEventListener("scroll", function(){
         if(scrollLoad.checkScroll()){
             async.loadJSON();
-//            timeline.init();
         }
     });
 
@@ -29,9 +28,7 @@ document.addEventListener("DOMContentLoaded", function(){
             var curdiv = timeline.getTimeline();
             console.log(curdiv);
             curdiv.focus();
-            if(timeline.index > 0){
-                timeline.index--;
-            }
+            timeline.minusIndex();
         }
         
 //      k를 눌렀을 때        
@@ -39,9 +36,7 @@ document.addEventListener("DOMContentLoaded", function(){
             var curdiv = timeline.getTimeline();
             console.log(curdiv);
             curdiv.focus();
-            if(timeline.index < timeline.arrayTimeline.length){
-                timeline.index++;
-            }
+            timeline.addIndex();
         }
     });
 
@@ -73,15 +68,36 @@ document.addEventListener("DOMContentLoaded", function(){
 var timeline = {
     arrayTimeline : [],
     index : 0,
+    
     init : function(){
         this.arrayTimeline = document.querySelectorAll(".outer");
         console.log(this.arrayTimeline);
+        this.index = 0;
         console.log(this.index);
     }.bind(this),
     
+    refreshArray : function(context){
+        this.arrayTimeline = document.querySelectorAll(".outer");
+    }.bind(this),
+    
+    addIndex : function(){
+        if(this.index < this.arrayTimeline.length ){
+            this.index++;
+        }else{
+            console.log("No More div");
+        };
+    }.bind(this),
+    
+    minusIndex : function(){
+        if(this.index > 0){
+            this.index--;
+        }else{
+            console.log("First div");
+        };
+    }.bind(this),
+    
     getTimeline : function(){
-        var asdf = this.arrayTimeline
-        console.log(asdf);
+        console.log(this.arrayTimeline);
         console.log(this.index);
         console.log(this.arrayTimeline[this.index]);
         
@@ -109,7 +125,7 @@ var async = {
                     console.log(item);
                     var dom = scrollLoad.makeDOM(item);
                     document.querySelector("main").appendChild(dom);
-                    timeline.init();
+                    timeline.refreshArray()
                 }
                 async.index++;
             }else if(async.index > 5){
