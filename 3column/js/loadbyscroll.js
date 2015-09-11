@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", function(){
 //    if(scrollLoad.checkScroll()){
     while(scrollLoad.checkScroll()){
         scrollLoad.loadByScroll();
-//        json.loadJSON();
+//        async.loadJSON();
     }
     
 //  document가 스크롤 될 때, 남은 스크롤 확인 및, 로드 여부 결정
     document.addEventListener("scroll", function(){
         if(scrollLoad.checkScroll()){
             scrollLoad.loadByScroll();
-            json.loadJSON();
+            async.loadJSON();
         }
     });
 
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 
-var json = {
+var async = {
     index       : 1,
     curFile     : function(){
         var fileDir = "json/page"+this.index+".json";
@@ -60,9 +60,7 @@ var json = {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', this.curFile(), true);
         xhr.onreadystatechange = function() {
-            console.log("onreadystatechange");
-            if (this.readyState === 4 && this.index <= 5){
-                console.log("readyState : 4");
+            if (this.readyState === 4 && async.index <= 5){
                 var data = JSON.parse(this.responseText);
                 for(var i = 0, item; item = data[i]; i++){
                     console.log(item);
