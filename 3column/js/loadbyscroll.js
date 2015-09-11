@@ -65,9 +65,8 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 var focusTo = function(element){
-    var x = element.offsetLeft;
-    var y = element.offsetTop;
-    window.scrollTo(x, y);
+    var y = element.offsetTop - 63;
+    window.scrollTo(0, y);
     element.focus();
 }
 
