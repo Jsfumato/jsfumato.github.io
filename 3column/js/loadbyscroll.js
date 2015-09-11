@@ -60,9 +60,10 @@ var json = {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', this.curFile(), true);
         xhr.onreadystatechange = function() {
+            console.log("onreadystatechange");
             if (this.readyState === 4 && this.index <= 5){
+                console.log("readyState : 4");
                 var data = JSON.parse(this.responseText);
-                
                 for(var i = 0, item; item = data[i]; i++){
                     console.log(item);
                 }
