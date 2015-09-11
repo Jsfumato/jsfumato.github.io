@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function(){
         if(e.keyCode === 74){
             var curdiv = timeline.getTimeline();
             console.log(curdiv);
-            curdiv.focus();
+            focusTo(curdiv);
             timeline.minusIndex();
         }
         
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function(){
         if(e.keyCode === 75){
             var curdiv = timeline.getTimeline();
             console.log(curdiv);
-            curdiv.focus();
+            focusTo(curdiv);
             timeline.addIndex();
         }
     });
@@ -64,6 +64,12 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 });
 
+var focusTo = function(element){
+    var x = element.offsetLeft;
+    var y = element.offsetTop;
+    window.scrollTo(x, y);
+    element.focus();
+}
 
 var timeline = {
     arrayTimeline : [],
@@ -142,7 +148,7 @@ var scrollLoad = {
     bodyHeight      : document.getElementsByTagName("body").scrollHeight,
     bodyScrollToTop : document.getElementsByTagName("body").scrollTop,
     scrollToBottom  : this.bodyHeight - (this.bodyScrollToTop + this.viewportHeight),
-
+    
     loadByScroll : function(){
         console.log("load div");
         var timeline = document.querySelector("main");
