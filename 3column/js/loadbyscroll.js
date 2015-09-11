@@ -79,8 +79,8 @@ var timeline = {
     },
     
     getTimeline : function(){
-        
-        console.log(this.arrayTimeline);
+        var asdf = this.arrayTimeline
+        console.log(asdf);
         console.log(this.index);
         console.log(this.arrayTimeline[this.index]);
         
