@@ -22,21 +22,21 @@ document.addEventListener("DOMContentLoaded", function(){
             console.log("focused");
             search.focus();
         }
-        
-//      j를 눌렀을 때
-        if(e.keyCode === 74){
-            var curdiv = timeline.getTimeline();
-            console.log(curdiv);
-            focusTo(curdiv);
-            timeline.minusIndex();
-        }
-        
-//      k를 눌렀을 때        
-        if(e.keyCode === 75){
+
+//      j를 눌렀을 때        
+        if(e.keyCode === 74 && search !== document.activeElement){
             var curdiv = timeline.getTimeline();
             console.log(curdiv);
             focusTo(curdiv);
             timeline.addIndex();
+        }
+        
+//      k를 눌렀을 때
+        if(e.keyCode === 75 && search !== document.activeElement){
+            var curdiv = timeline.getTimeline();
+            console.log(curdiv);
+            focusTo(curdiv);
+            timeline.minusIndex();
         }
     });
 
