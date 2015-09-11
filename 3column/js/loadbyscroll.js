@@ -82,7 +82,9 @@ var timeline = {
     getTimeline : function(){
         
         console.log(this.arrayTimeline);
+        console.log(timeline.arrayTimeline);
         console.log(this.index);
+        console.log(timeline.index);
         console.log(this.arrayTimeline[this.index]);
         
         var timeline = this.arrayTimeline[this.index];
