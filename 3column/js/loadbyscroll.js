@@ -65,7 +65,7 @@ var async = {
                 for(var i = 0, item; item = data[i]; i++){
                     console.log(item);
                 }
-                this.index++;
+                async.index++;
             };
         };
         xhr.send(null);
