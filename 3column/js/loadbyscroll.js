@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-    
-    
 //  처음 페이지 로드 때, JSON file 로드를 한다.
     if(scrollLoad.checkScroll()){
         async.loadJSON();
+        timeline.init();
     }
     
 //  document가 스크롤 될 때, 남은 스크롤 확인 및, 로드 여부 결정
     document.addEventListener("scroll", function(){
         if(scrollLoad.checkScroll()){
             async.loadJSON();
+            timeline.init();
         }
     });
 
@@ -25,13 +25,20 @@ document.addEventListener("DOMContentLoaded", function(){
         
 //      j를 눌렀을 때
         if(e.keyCode === 74){
-            document.querySelector("main").firstChild.focus();
-            console.log(document.querySelector("main").firstChild());
+            var curdiv = timeline.getTimeline();
+            curdiv.focus();
+            if(timeline.index > 0){
+                timeline.index--;
+            }
         }
         
 //      k를 눌렀을 때        
         if(e.keyCode === 75){
-            
+            var curdiv = timeline.getTimeline();
+            curdiv.focus();
+            if(timeline.index < timeline.arrayTimeline.length){
+                timeline.index++;
+            }
         }
     });
 
@@ -58,6 +65,21 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     });
 });
+
+
+var timeline = {
+    arrayTimeline : [],
+    index : 0,
+    init : function(){
+        this.arrayTimeline = document.querySelectorAll(".outer");
+        console.log(this.arrayTimeline);
+        console.log(timeline.arrayTimeline);
+    },
+    
+    getTimeline : function(){
+        return this.arrayTimeline[this.index];
+    }
+}
 
 
 var async = {
