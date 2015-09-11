@@ -80,8 +80,13 @@ var timeline = {
     },
     
     getTimeline : function(){
-        return this.arrayTimeline[this.index];
-    }
+        var timeline = this.arrayTimeline[this.index];
+        console.log(this.arrayTimeline)
+        console.log(this.index)
+        console.log(this.arrayTimeline[this.index])
+        console.log(timeline);
+        return timeline;
+    }.bind(this)
 }
 
 
