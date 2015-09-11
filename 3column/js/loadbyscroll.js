@@ -3,14 +3,14 @@ document.addEventListener("DOMContentLoaded", function(){
 //  처음 페이지 로드 때, JSON file 로드를 한다.
     if(scrollLoad.checkScroll()){
         async.loadJSON();
-        timeline.init();
+//        timeline.init();
     }
     
 //  document가 스크롤 될 때, 남은 스크롤 확인 및, 로드 여부 결정
     document.addEventListener("scroll", function(){
         if(scrollLoad.checkScroll()){
             async.loadJSON();
-            timeline.init();
+//            timeline.init();
         }
     });
 
@@ -109,6 +109,7 @@ var async = {
                     console.log(item);
                     var dom = scrollLoad.makeDOM(item);
                     document.querySelector("main").appendChild(dom);
+                    timeline.init();
                 }
                 async.index++;
             }else if(async.index > 5){
