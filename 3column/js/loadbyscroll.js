@@ -1,27 +1,38 @@
 document.addEventListener("DOMContentLoaded", function(){
 
+    
+    
 //  처음 페이지 로드 때, JSON file 로드를 한다.
     if(scrollLoad.checkScroll()){
-//    while(scrollLoad.checkScroll()){
-//        scrollLoad.loadByScroll();
         async.loadJSON();
     }
     
 //  document가 스크롤 될 때, 남은 스크롤 확인 및, 로드 여부 결정
     document.addEventListener("scroll", function(){
         if(scrollLoad.checkScroll()){
-//            scrollLoad.loadByScroll();
             async.loadJSON();
         }
     });
 
 //  alt + 's' 키 입력시 검색창에 focus
     document.addEventListener("keyup", function(e){
+        console.log(e.keyCode);
         var search = document.querySelector(".searchText");
         if(e.altKey === true && e.keyCode === 83){
             console.log("focused");
             search.focus();
-        } 
+        }
+        
+//      j를 눌렀을 때
+        if(e.keyCode === 74){
+            document.querySelector("main").firstChild.focus();
+            console.log(document.querySelector("main").firstChild());
+        }
+        
+//      k를 눌렀을 때        
+        if(e.keyCode === 75){
+            
+        }
     });
 
 //  main에 click 이벤트를 걸어, 이벤트 위임을 한다.
