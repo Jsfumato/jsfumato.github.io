@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
 //  alt + 's' 키 입력시 검색창에 focus
     document.addEventListener("keyup", function(e){
-        console.log(e.keyCode);
+//        console.log(e.keyCode);
         var search = document.querySelector(".searchText");
-        console.log(search);
+//        console.log(search);
         if(e.altKey === true && e.keyCode === 83){
             console.log("focused");
             search.focus();
@@ -25,18 +25,18 @@ document.addEventListener("DOMContentLoaded", function(){
 
 //      j를 눌렀을 때        
         if(e.keyCode === 74 && search !== document.activeElement){
+            timeline.addIndex();
             var curdiv = timeline.getTimeline();
             console.log(curdiv);
             focusTo(curdiv);
-            timeline.addIndex();
         }
         
 //      k를 눌렀을 때
         if(e.keyCode === 75 && search !== document.activeElement){
+            timeline.minusIndex();
             var curdiv = timeline.getTimeline();
             console.log(curdiv);
             focusTo(curdiv);
-            timeline.minusIndex();
         }
     });
 
@@ -64,6 +64,10 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 });
 
+var css = {
+    noti : 'background: #222; color: #bada55'
+};
+
 var focusTo = function(element){
     var y = element.offsetTop - 63;
     window.scrollTo(0, y);
@@ -71,8 +75,9 @@ var focusTo = function(element){
     element.classList.add("focused");
     var focustime = window.setTimeout(function(){
         element.classList.remove("focused");
-    }, 200);
-    window.clearTimeout(focustime);
+        console.log("remove class");
+        window.clearTimeout(focustime);
+    }, 500);
 }
 
 var timeline = {
@@ -80,13 +85,15 @@ var timeline = {
     index : 0,
     
     init : function(){
+        console.log("%c [timeline] init() ", css.noti);
         this.arrayTimeline = document.querySelectorAll(".outer");
-        console.log(this.arrayTimeline);
-        this.index = 0;
-        console.log(this.index);
+//        console.log(this.arrayTimeline);
+        this.index = -1;
+//        console.log(this.index);
     }.bind(this),
     
     refreshArray : function(context){
+        console.log("%c [timeline] refresh() ", css.noti);
         this.arrayTimeline = document.querySelectorAll(".outer");
     }.bind(this),
     
@@ -94,7 +101,7 @@ var timeline = {
         if(this.index < this.arrayTimeline.length-1 ){
             this.index++;
         }else{
-            console.log("No More div");
+            console.log("%c [addIndex] No More div ", css.noti);
         };
     }.bind(this),
     
@@ -102,13 +109,13 @@ var timeline = {
         if(this.index > 0){
             this.index--;
         }else{
-            console.log("First div");
+            console.log("%c [minusIndex] First div ", css.noti);
         };
     }.bind(this),
     
     getTimeline : function(){
 //        console.log(this.arrayTimeline);
-        console.log(this.index);
+        console.log("%c [Current Index] "+this.index, css.noti);
 //        console.log(this.arrayTimeline[this.index]);
         var timeline = this.arrayTimeline[this.index];
         return timeline;
@@ -135,12 +142,11 @@ var async = {
                     timeline.refreshArray()
                 }
                 async.index++;
-//                xhr.send(null);
-                
-            }else if(async.index > 5){
-                console.log("NO MORE JSON FILE");
-            }
-        };
+            };
+        if(async.index > 5){
+            console.log("NO MORE JSON FILE");
+            return;
+        }
         xhr.send(null);
     }
 };

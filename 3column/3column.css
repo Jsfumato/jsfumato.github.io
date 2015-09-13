@@ -4,8 +4,8 @@
 }
 
 .focused {
-    border: 2px solid yellow;
-    transition: border .4s ease-in-out;
+    box-shadow: 0px 0px 5px 2px #FFF200;
+    transition: box-shadow .4s ease-in-out;
 }
 
 
