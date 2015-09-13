@@ -143,10 +143,10 @@ var async = {
                 }
                 async.index++;
             };
-        if(async.index > 5){
-            console.log("NO MORE JSON FILE");
-            return;
-        }
+//        if(async.index > 5){
+//            console.log("NO MORE JSON FILE");
+//            return;
+//        };
         xhr.send(null);
     }
 };
