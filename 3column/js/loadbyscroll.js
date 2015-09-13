@@ -68,6 +68,11 @@ var focusTo = function(element){
     var y = element.offsetTop - 63;
     window.scrollTo(0, y);
     element.focus();
+    element.classList.add("focused");
+    var focustime = window.setTimeout(function(){
+        element.classList.remove("focused");
+    }, 200);
+    window.clearTimeout(focustime);
 }
 
 var timeline = {
@@ -86,7 +91,7 @@ var timeline = {
     }.bind(this),
     
     addIndex : function(){
-        if(this.index < this.arrayTimeline.length ){
+        if(this.index < this.arrayTimeline.length-1 ){
             this.index++;
         }else{
             console.log("No More div");
@@ -102,16 +107,13 @@ var timeline = {
     }.bind(this),
     
     getTimeline : function(){
-        console.log(this.arrayTimeline);
+//        console.log(this.arrayTimeline);
         console.log(this.index);
-        console.log(this.arrayTimeline[this.index]);
-        
+//        console.log(this.arrayTimeline[this.index]);
         var timeline = this.arrayTimeline[this.index];
-        console.log(timeline);
         return timeline;
     }.bind(this)
 }
-
 
 var async = {
     index       : 1,
@@ -133,11 +135,13 @@ var async = {
                     timeline.refreshArray()
                 }
                 async.index++;
+                xhr.send(null);
+                
             }else if(async.index > 5){
                 console.log("NO MORE JSON FILE");
             }
         };
-        xhr.send(null);
+//        xhr.send(null);
     }
 };
 

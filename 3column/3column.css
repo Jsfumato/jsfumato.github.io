@@ -3,6 +3,11 @@
     color : #00e
 }
 
+.focused {
+    border: 2px solid yellow;
+    transition: border .4s ease-in-out;
+}
+
 
 /*header*/
 header{
