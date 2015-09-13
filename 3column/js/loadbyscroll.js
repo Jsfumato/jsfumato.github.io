@@ -135,13 +135,13 @@ var async = {
                     timeline.refreshArray()
                 }
                 async.index++;
-                xhr.send(null);
+//                xhr.send(null);
                 
             }else if(async.index > 5){
                 console.log("NO MORE JSON FILE");
             }
         };
-//        xhr.send(null);
+        xhr.send(null);
     }
 };
 
