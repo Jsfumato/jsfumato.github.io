@@ -87,9 +87,7 @@ var timeline = {
     init : function(){
         console.log("%c [timeline] init() ", css.noti);
         this.arrayTimeline = document.querySelectorAll(".outer");
-//        console.log(this.arrayTimeline);
         this.index = -1;
-//        console.log(this.index);
     }.bind(this),
     
     refreshArray : function(context){
@@ -114,11 +112,9 @@ var timeline = {
     }.bind(this),
     
     getTimeline : function(){
-//        console.log(this.arrayTimeline);
         console.log("%c [Current Index] "+this.index, css.noti);
-//        console.log(this.arrayTimeline[this.index]);
         if(this.index < 0){
-            return this.arrayTimeline[0];
+            this.index = 0;
         }
         var timeline = this.arrayTimeline[this.index];
         return timeline;
