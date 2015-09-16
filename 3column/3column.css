@@ -196,8 +196,8 @@ main .outer{
 .outer .interaction span, .outer .button span {
     color: #7f7f7f;
     display: inline-block;
-    padding-right: 10px;
-    font-size: 15px;
+    margin-right: 10px;
+    font-size: 12px;
 }
 
 .outer .button span{
