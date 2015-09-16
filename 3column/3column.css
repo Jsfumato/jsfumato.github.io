@@ -1,5 +1,5 @@
 /*function*/
-.blue {
+.outer .button span .blue {
     color : #00e
 }
 
@@ -191,18 +191,18 @@ main .outer{
 .outer .interaction span {
     color: #7f7f7f;
     display: inline-block;
-    width: 25px;
+    width: 70px;
 
-    font-size: 9px;
+    font-size: 12px;
     line-height: 12px;
 }
 
 .outer .button span{
     color: #7f7f7f;
     display: inline-block;
-    width: 35px;
+    width: 140px;
     
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     line-height: 14px;
 }
