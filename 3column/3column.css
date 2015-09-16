@@ -186,23 +186,8 @@ main .outer{
 .outer .contentBox div:nth-child(2){
     height: 30px;
 }
-.contentBox div:nth-child(2)::before {
-    position: absolute;
-/*    overflow: hidden;*/
-    width: 50%;
-    height: 1px;
-    content: '';
-    background-color: #ddd;
-}
-.contentBox div:nth-child(2){
-}
-
-.outer .button {
-    line-height: 30px;
-    height: 30px;
-}
 /*
-.outer .button::before {
+.contentBox div:nth-child(2)::before {
     position: absolute;
     overflow: hidden;
     width: 50%;
@@ -211,6 +196,13 @@ main .outer{
     background-color: #ddd;
 }
 */
+.contentBox div:nth-child(2){
+}
+
+.outer .button {
+    line-height: 30px;
+    height: 30px;
+}
 
 #advertisement{
     float: right;
