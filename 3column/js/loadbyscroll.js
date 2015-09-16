@@ -197,6 +197,7 @@ var scrollLoad = {
         var userName = document.createElement("span");
         userName.textContent = item.name;
         var date = document.createElement("span");
+        date.classList.add("nowDate")
         var now = new Date;
         date.textContent = 
             (now.getMonth()+1)+"월"+(now.getDay()-1)+"일 "+now.getHours()+"시"+now.getMinutes()+"분";

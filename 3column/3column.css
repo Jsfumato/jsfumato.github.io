@@ -179,6 +179,11 @@ main .outer{
 .name div span {
     display: block;
 }
+.name .nowDate {
+    font-size: 10px;
+    color : #9197a3;
+}
+
 .outer .contentBox div:first-child{
     height: auto;
     padding: 10px 0;
@@ -188,25 +193,19 @@ main .outer{
     height: 30px;
 }
 
-.outer .interaction span {
+.outer .interaction span, .outer .button span {
     color: #7f7f7f;
     display: inline-block;
-    
     padding-right: 10px;
-
     font-size: 12px;
-    line-height: 12px;
 }
 
 .outer .button span{
-    color: #7f7f7f;
-    display: inline-block;
-    
-    padding-right: 10px;
-    
-    font-size: 15px;
     font-weight: bold;
-    line-height: 14px;
+}
+
+.outer .button span:hover {
+    cursor: pointer;
 }
 
 .contentBox div:nth-child(2){
