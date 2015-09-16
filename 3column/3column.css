@@ -201,6 +201,7 @@ main .outer{
     line-height: 30px;
     height: 30px;
 }
+/*
 .outer .button::before {
     position: absolute;
     overflow: hidden;
@@ -209,6 +210,7 @@ main .outer{
     content: '';
     background-color: #ddd;
 }
+*/
 
 #advertisement{
     float: right;
