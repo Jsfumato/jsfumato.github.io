@@ -117,6 +117,9 @@ var timeline = {
 //        console.log(this.arrayTimeline);
         console.log("%c [Current Index] "+this.index, css.noti);
 //        console.log(this.arrayTimeline[this.index]);
+        if(this.index < 0){
+            return this.arrayTimeline[0];
+        }
         var timeline = this.arrayTimeline[this.index];
         return timeline;
     }.bind(this)

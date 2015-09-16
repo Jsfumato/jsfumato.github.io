@@ -4,10 +4,9 @@
 }
 
 .focused {
-    box-shadow: 0px 0px 5px 2px #FFF200;
-    transition: box-shadow .4s ease-in-out;
+    box-shadow: 0px 0px 3px 1px #FFF200;
+    transition: box-shadow .3s ease-in-out;
 }
-
 
 /*header*/
 header{
