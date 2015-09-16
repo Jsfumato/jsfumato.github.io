@@ -1,6 +1,6 @@
 /*function*/
-.outer .button span .blue {
-    color : #00e
+.outer .button span.blue {
+    color : #5890ff
 }
 
 .focused {
@@ -191,7 +191,8 @@ main .outer{
 .outer .interaction span {
     color: #7f7f7f;
     display: inline-block;
-    width: 70px;
+    
+    padding-right: 10px;
 
     font-size: 12px;
     line-height: 12px;
@@ -200,7 +201,8 @@ main .outer{
 .outer .button span{
     color: #7f7f7f;
     display: inline-block;
-    width: 140px;
+    
+    padding-right: 10px;
     
     font-size: 15px;
     font-weight: bold;
