@@ -208,7 +208,10 @@ var scrollLoad = {
         contentBox.classList.add("contentBox");
         var content = document.createElement("div");
         content.textContent = item.context;
+        
+        
         var interaction = document.createElement("div");
+        interaction.classList.add("interaction");
         var showLike = document.createElement("span");
         showLike.setAttribute("data-like", item.like);
         showLike.textContent = "좋아요 " + showLike.getAttribute("data-like") +"개";
@@ -217,10 +220,14 @@ var scrollLoad = {
         showReply.textContent = "댓글 " + item.reply +"개"
         var showShare = document.createElement("span");
         showShare.textContent = "공유 " + item.share +"개"
+        
         interaction.appendChild(showLike);
         interaction.appendChild(showReply);
         interaction.appendChild(showShare);
+        
+        
         var button = document.createElement("div");
+        button.classList.add("button");
         var like = document.createElement("span");
         like.textContent = "좋아요";
         like.classList.add("likeBtn");
@@ -233,6 +240,7 @@ var scrollLoad = {
         var share = document.createElement("span");
         share.textContent = "공유하기";
         share.classList.add("shareBtn");
+        
         button.appendChild(like);
         button.appendChild(reply);
         button.appendChild(share);
@@ -240,6 +248,7 @@ var scrollLoad = {
 
         contentBox.appendChild(content);
         contentBox.appendChild(interaction);
+        
         outer.appendChild(name);
         outer.appendChild(contentBox);
         outer.appendChild(button);

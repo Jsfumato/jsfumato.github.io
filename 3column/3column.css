@@ -187,16 +187,26 @@ main .outer{
 .outer .contentBox div:nth-child(2){
     height: 30px;
 }
-/*
-.contentBox div:nth-child(2)::before {
-    position: absolute;
-    overflow: hidden;
-    width: 50%;
-    height: 1px;
-    content: '';
-    background-color: #ddd;
+
+.outer .interaction span {
+    color: #7f7f7f;
+    display: inline-block;
+    width: 25px;
+
+    font-size: 9px;
+    line-height: 12px;
 }
-*/
+
+.outer .button span{
+    color: #7f7f7f;
+    display: inline-block;
+    width: 35px;
+    
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+}
+
 .contentBox div:nth-child(2){
 }
 
