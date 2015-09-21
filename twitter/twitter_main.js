@@ -100,13 +100,13 @@ document.addEventListener("DOMContentLoaded", function(){
         
     });
 
-    posttxt.addEventListener("focusout", function(e){
-        if(!isActive){
-            var postTab = e.currentTarget.parentNode.parentNode;
-            postTab.querySelector(".postbox").remove();
-            postTab.classList.remove("postFocused");
-        };
-    });
+//    posttxt.addEventListener("focusout", function(e){
+//        if(!isActive){
+//            var postTab = e.currentTarget.parentNode.parentNode;
+//            postTab.querySelector(".postbox").remove();
+//            postTab.classList.remove("postFocused");
+//        };
+//    });
     
     
     
