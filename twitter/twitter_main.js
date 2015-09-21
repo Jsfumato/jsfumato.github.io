@@ -227,7 +227,8 @@ async = {
         var xhr = new XMLHttpRequest();
         var contentsend = document.querySelector(".posttxt").value;
         var item = 
-            {"id":"404",
+            {
+            "id":"404",
              "content": contentsend,
              "retweet":1,
              "favorite":18,
