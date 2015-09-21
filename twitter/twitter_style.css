@@ -327,15 +327,14 @@ main .timeline .content .interactive {
     padding-left: 0;
     width: 520px;
     margin-left: 70px;
-/*    padding-top: 10px;*/
 }
 
-main .timeline .content .interactive li {
+main .timeline .content .interactive li, i {
     list-style: none;
     display: inline-block;
     color: #bbb;
 }
 
-main .timeline .content .interactive li i.activeFav{
+main .timeline .content .interactive i.activeFav{
     color: yellow;
 }

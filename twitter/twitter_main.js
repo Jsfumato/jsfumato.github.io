@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function(){
     var isActive = false;
     var alreadymake = false;
 
-    
     posttxt.addEventListener("focus", function(e){
         isActive = true
         if(!alreadymake){
@@ -39,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(){
             postbox.appendChild(postbutton);
             postTab.appendChild(postbox);
         }
-        var alreadymake = true;
+        alreadymake = true;
         
         posttxt.addEventListener("keydown", function(e){
             var postTab = e.currentTarget.parentNode.parentNode;
@@ -52,14 +51,13 @@ document.addEventListener("DOMContentLoaded", function(){
             }else{
                 document.querySelector(".postbtn").classList.remove("active");
             }
-            console.log(result);
         });
     });
     
     
     document.addEventListener("click", function(e){
         console.log(e.target);
-        
+        isActive = false
         
         var postbtn = document.querySelector(".active");
         if(e.target === postbtn){
@@ -72,9 +70,10 @@ document.addEventListener("DOMContentLoaded", function(){
             e.target.classList.remove("activeFav");
             var targetid =
                 e.target.parentElement.parentElement.parentElement.querySelector(".userTag");
-            var target = e.target.parentElement.textContent;
+            var target = e.target.parentElement.children[5].textContent;
+            console.log(target);
             target = eval(target)-1;
-//            e.target.parentElement.textContent = target;
+            e.target.parentElement.children[5].textContent = target;
             async.unfavorite(targetid.textContent);
             return;
         }
@@ -84,41 +83,33 @@ document.addEventListener("DOMContentLoaded", function(){
             e.target.classList.add("activeFav");
             var targetid =
                 e.target.parentElement.parentElement.parentElement.querySelector(".userTag");
-            var target = e.target.parentElement.textContent;
+            var target = e.target.parentElement.children[5].textContent;
+            console.log(target);
             target = eval(target)+1;
-//            e.target.parentElement.textContent = target;
+            e.target.parentElement.children[5].textContent = target;
             async.favorite(targetid.textContent);
             return;
         }
-        
+
 
         if(e.target.classList.contains("active")){
             isActive = true;
-            console.log(isActive);
-            alreadymake = true;
-            return;
         }
-
-        if(!e.target.classList.contains("active")){
-            isActive = false;
-            console.log(isActive);
-            alreadymake = false;
-            return;
+        if(e.target.classList.contains("posttxt")){
+            isActive = true;
         }
         
+        var postTab = document.querySelector(".postFocused")
         
-    });
-
-    posttxt.addEventListener("focusout", function(e){
         if(!isActive){
-            var postTab = e.currentTarget.parentNode.parentNode;
+            console.log(postTab);
+            isActive = false;
+            alreadymake = false;
             postTab.querySelector(".postbox").remove();
             postTab.classList.remove("postFocused");
         };
     });
-    
-    
-    
+
     
 })
 
@@ -181,11 +172,11 @@ var content = {
         var interactive = document.createElement("ul");
         interactive.classList.add("interactive");
         
-        share.appendChild(sicon);
+        interactive.appendChild(sicon);
         interactive.appendChild(share);
-        retweet.appendChild(reticon);
+        interactive.appendChild(reticon);
         interactive.appendChild(retweet);
-        favorite.appendChild(favicon);
+        interactive.appendChild(favicon);
         interactive.appendChild(favorite);
         
         var profileImg = document.createElement("img");
@@ -211,20 +202,10 @@ async = {
     },
     loadpost : function(){
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', this.curFile(), false);
+        xhr.open('GET', this.curFile(), true);
         xhr.onreadystatechange = function() {
-            if (this.readyState == 4){
-                var data = JSON.parse(xhr.responseText);
-                if(data.posts.length === 0){
-                    console.log("NO MORE JSON FILE");
-                    return;
-                }
-                
-                for(var i = 0, item; item = data.posts[i]; i++){
-//                    console.log(item);
-                    var dom = content.makeContent(item);
-                    document.querySelector(".timeline").appendChild(dom);
-                }
+            if (xhr.readyState==4 && xhr.status==200){
+                callback(xhr.responseText);
                 async.index++;
             };
         }
@@ -235,16 +216,21 @@ async = {
         var xhr = new XMLHttpRequest();
         var contentsend = document.querySelector(".posttxt").value;
         var item = 
-            {"id":"4004",
+            {"id":"404",
              "content": contentsend,
              "retweet":1,
              "favorite":18,
              "regdate":new Date,
-             "username":"jsfumato"
+             "username":"황종성"
             }
         xhr.open('POST', "http://api.taegon.kim/posts", true);
-        console.log(JSON.stringify(item));
-        xhr.send();
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4){
+                console.log(JSON.stringify(item));
+            }
+        }
+        xhr.send(JSON.stringify(item));
     },
     
     favorite : function(num){
@@ -314,3 +300,16 @@ var scrollLoad = {
     },
 };
 
+callback = function(xhrresponseText){
+
+    var data = JSON.parse(xhrresponseText);
+    if(data.posts.length === 0){
+        console.log("NO MORE JSON FILE");
+        return;
+    }
+
+    for(var i = 0, item; item = data.posts[i]; i++){
+        var dom = content.makeContent(item);
+        document.querySelector(".timeline").appendChild(dom);
+    }
+};
