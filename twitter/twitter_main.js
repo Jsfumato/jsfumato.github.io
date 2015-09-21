@@ -1,10 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     
-    //  처음 페이지 로드 때, 로드를 한다.
-//    if(scrollLoad.checkScroll()){
-        async.loadpost();
-//        timeline.init();
-//    }
+    async.init();
+    async.loadpost();
 
     //  document가 스크롤 될 때, 남은 스크롤 확인 및, 로드 여부 결정
     document.addEventListener("scroll", function(){
@@ -29,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(){
             var postbox = document.createElement("div");
             postbox.classList.add("postbox");
             var postbutton = document.createElement("button");
-            postbutton.setAttribute("type", "submit")
+            postbutton.setAttribute("type", "button")
             postbutton.textContent = "Tweet";
             postbutton.classList.add("postbtn");
             var checkbyte = document.createElement("span");
@@ -117,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function(){
 var postboxfunc = {
     checkbyte : function(element){
         var char = element.value.length;
-        return 299-char;
+        return 300-char;
     }
 }
 
@@ -195,7 +192,12 @@ var content = {
 }
 
 async = {
+    check : true,
     index : 1,
+    init : function(){
+        async.check = true;
+        async.index = 1;
+    },
     curFile : function(){
         var filesrc = "http://api.taegon.kim/posts/page/" + this.index;
         return filesrc;
@@ -204,13 +206,21 @@ async = {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', this.curFile(), true);
         xhr.onreadystatechange = function() {
+            
             if (xhr.readyState==4 && xhr.status==200){
-                callback(xhr.responseText);
+                console.log(JSON.parse(xhr.responseText).posts.length);
+                console.log(JSON.parse(xhr.responseText).posts.length === 0);
+                if(JSON.parse(xhr.responseText).posts.length === 0){
+                    async.check = false;
+                }
+                callback(JSON.parse(xhr.responseText));
             };
         }
-        async.index++;
-
         xhr.send();
+        console.log(this.check);
+        if(async.check){
+            async.index++;
+        }
     },
     
     sendpost : function(){
@@ -224,14 +234,18 @@ async = {
              "regdate":new Date,
              "username":"황종성"
             }
+        var sendwhat = JSON.stringify(item);
         xhr.open('POST', "http://api.taegon.kim/posts", true);
-        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded;charset=UTF-8");
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4){
-                console.log(JSON.stringify(item));
-            }
-        }
-        xhr.send(JSON.stringify(item));
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+
+//        xhr.onreadystatechange = function() {
+//            if (this.readyState == 4){
+//                console.log(JSON.stringify(item));
+//            }
+//        }
+        
+        console.log(sendwhat);
+        xhr.send(item);
     },
     
     favorite : function(num){
@@ -266,8 +280,6 @@ async = {
         }
         xhr.send();
     }
-    
-    
 };
 
 
@@ -301,14 +313,7 @@ var scrollLoad = {
     },
 };
 
-callback = function(xhrresponseText){
-
-    var data = JSON.parse(xhrresponseText);
-    if(data.posts.length === 0){
-        console.log("NO MORE JSON FILE");
-        return;
-    }
-
+callback = function(data){
     for(var i = 0, item; item = data.posts[i]; i++){
         var dom = content.makeContent(item);
         document.querySelector(".timeline").appendChild(dom);

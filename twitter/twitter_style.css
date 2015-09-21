@@ -204,7 +204,7 @@ main .posttab .innerbox .posttxt {
     position: absolute;
     top: 10px;
     left: 60px;
-    
+    resize: none;
 }
 
 
@@ -212,6 +212,7 @@ main .posttab .innerbox .posttxt {
 
 main .posttab.postFocused .innerbox .posttxt {
     height: 100px;
+    resize: none;
 }
 
 main .posttab.postFocused {
