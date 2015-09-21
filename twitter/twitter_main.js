@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(){
     
     //  처음 페이지 로드 때, 로드를 한다.
-    if(scrollLoad.checkScroll()){
+//    if(scrollLoad.checkScroll()){
         async.loadpost();
 //        timeline.init();
-    }
+//    }
 
     //  document가 스크롤 될 때, 남은 스크롤 확인 및, 로드 여부 결정
     document.addEventListener("scroll", function(){
@@ -206,10 +206,11 @@ async = {
         xhr.onreadystatechange = function() {
             if (xhr.readyState==4 && xhr.status==200){
                 callback(xhr.responseText);
-                async.index++;
             };
         }
-        xhr.send(null);
+        async.index++;
+
+        xhr.send();
     },
     
     sendpost : function(){
@@ -291,7 +292,7 @@ var scrollLoad = {
         this.bodyScrollToTop    = body.scrollTop;
         this.scrollToBottom     = this.bodyHeight - (this.bodyScrollToTop + this.viewportHeight);
 
-        if(this.scrollToBottom < this.viewportHeight){
+        if(this.scrollToBottom < this.viewportHeight/2){
             console.log("remain : " +this.scrollToBottom);
             return true;
         }else{
