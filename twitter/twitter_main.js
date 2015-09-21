@@ -18,23 +18,28 @@ document.addEventListener("DOMContentLoaded", function(){
     var posttxt = document.querySelector(".posttxt");
 
     var isActive = false;
+    var alreadymake = false;
+
     
     posttxt.addEventListener("focus", function(e){
         isActive = true
-        var postTab = e.currentTarget.parentNode.parentNode;
-        postTab.classList.add("postFocused");
-        
-        var postbox = document.createElement("div");
-        postbox.classList.add("postbox");
-        var postbutton = document.createElement("button");
-        postbutton.setAttribute("type", "submit")
-        postbutton.textContent = "Tweet";
-        postbutton.classList.add("postbtn");
-        var checkbyte = document.createElement("span");
-        checkbyte.textContent = "300";
-        postbox.appendChild(checkbyte);
-        postbox.appendChild(postbutton);
-        postTab.appendChild(postbox);
+        if(!alreadymake){
+            var postTab = e.currentTarget.parentNode.parentNode;
+            postTab.classList.add("postFocused");
+
+            var postbox = document.createElement("div");
+            postbox.classList.add("postbox");
+            var postbutton = document.createElement("button");
+            postbutton.setAttribute("type", "submit")
+            postbutton.textContent = "Tweet";
+            postbutton.classList.add("postbtn");
+            var checkbyte = document.createElement("span");
+            checkbyte.textContent = "300";
+            postbox.appendChild(checkbyte);
+            postbox.appendChild(postbutton);
+            postTab.appendChild(postbox);
+        }
+        var alreadymake = true;
         
         posttxt.addEventListener("keydown", function(e){
             var postTab = e.currentTarget.parentNode.parentNode;
@@ -55,17 +60,6 @@ document.addEventListener("DOMContentLoaded", function(){
     document.addEventListener("click", function(e){
         console.log(e.target);
         
-        if(e.target.classList.contains("active")){
-            isActive = true;
-            console.log(isActive);
-            return;
-        }
-        
-//        if(!e.target.classList.contains("active")){
-//            isActive = false;
-//            console.log(isActive);
-//            return;
-//        }
         
         var postbtn = document.querySelector(".active");
         if(e.target === postbtn){
@@ -97,16 +91,31 @@ document.addEventListener("DOMContentLoaded", function(){
             return;
         }
         
+
+        if(e.target.classList.contains("active")){
+            isActive = true;
+            console.log(isActive);
+            alreadymake = true;
+            return;
+        }
+
+        if(!e.target.classList.contains("active")){
+            isActive = false;
+            console.log(isActive);
+            alreadymake = false;
+            return;
+        }
+        
         
     });
 
-//    posttxt.addEventListener("focusout", function(e){
-//        if(!isActive){
-//            var postTab = e.currentTarget.parentNode.parentNode;
-//            postTab.querySelector(".postbox").remove();
-//            postTab.classList.remove("postFocused");
-//        };
-//    });
+    posttxt.addEventListener("focusout", function(e){
+        if(!isActive){
+            var postTab = e.currentTarget.parentNode.parentNode;
+            postTab.querySelector(".postbox").remove();
+            postTab.classList.remove("postFocused");
+        };
+    });
     
     
     
