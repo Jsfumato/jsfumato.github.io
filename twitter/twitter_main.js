@@ -230,7 +230,7 @@ async = {
         var xhr = new XMLHttpRequest();
         var contentsend = document.querySelector(".posttxt").value;
 
-        var what = "id="+async.id+"&content="+contentsend+"&retweet=1&favorite=18&regdate"+new Date+"&username=황종성"
+        var what = "content="+contentsend+"&username=황종성"
         xhr.open('POST', "http://api.taegon.kim/posts", true);
         xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xhr.send(what);
