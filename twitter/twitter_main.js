@@ -58,11 +58,13 @@ document.addEventListener("DOMContentLoaded", function(){
         if(e.target.classList.contains("active")){
             isActive = true;
             console.log(isActive);
+            return;
         }
-//        
+        
 //        if(!e.target.classList.contains("active")){
 //            isActive = false;
 //            console.log(isActive);
+//            return;
 //        }
         
         var postbtn = document.querySelector(".active");
@@ -232,9 +234,8 @@ async = {
              "username":"jsfumato"
             }
         xhr.open('POST', "http://api.taegon.kim/posts", true);
-//        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-        console.log(item);
-        xhr.send(JSON.stringify(item));
+        console.log(JSON.stringify(item));
+        xhr.send();
     },
     
     favorite : function(num){
