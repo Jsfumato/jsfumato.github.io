@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
         if(e.target === postbtn){
             console.log("post");
             async.sendpost();
+            document.querySelector(".posttxt").value = "";
             return;
         }
         
@@ -194,9 +195,11 @@ var content = {
 async = {
     check : true,
     index : 1,
+    id:0,
     init : function(){
         async.check = true;
         async.index = 1;
+        async.id = 1000;
     },
     curFile : function(){
         var filesrc = "http://api.taegon.kim/posts/page/" + this.index;
@@ -226,27 +229,12 @@ async = {
     sendpost : function(){
         var xhr = new XMLHttpRequest();
         var contentsend = document.querySelector(".posttxt").value;
-        var item = 
-            {
-            "id":"404",
-             "content": contentsend,
-             "retweet":1,
-             "favorite":18,
-             "regdate":new Date,
-             "username":"황종성"
-            }
-        var sendwhat = JSON.stringify(item);
-        xhr.open('POST', "http://api.taegon.kim/posts", true);
-        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
 
-//        xhr.onreadystatechange = function() {
-//            if (this.readyState == 4){
-//                console.log(JSON.stringify(item));
-//            }
-//        }
-        
-        console.log(sendwhat);
-        xhr.send(item);
+        var what = "id="+async.id+"&content="+contentsend+"&retweet=1&favorite=18&regdate"+new Date+"&username=황종성"
+        xhr.open('POST', "http://api.taegon.kim/posts", true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send(what);
+        async.id++;
     },
     
     favorite : function(num){
