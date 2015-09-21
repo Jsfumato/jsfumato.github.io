@@ -69,6 +69,18 @@ document.addEventListener("DOMContentLoaded", function(){
         if(e.target === postbtn){
             console.log("post");
             async.sendpost();
+            return;
+        }
+        
+        if(e.target.classList.contains("activeFav")){
+            e.target.classList.remove("activeFav");
+            var targetid =
+                e.target.parentElement.parentElement.parentElement.querySelector(".userTag");
+            var target = e.target.parentElement.textContent;
+            target = eval(target)-1;
+//            e.target.parentElement.textContent = target;
+            async.unfavorite(targetid.textContent);
+            return;
         }
         
         if(e.target.classList.contains("fa-star") && !e.target.classList.contains("activeFav")){
@@ -79,27 +91,11 @@ document.addEventListener("DOMContentLoaded", function(){
             var target = e.target.parentElement.textContent;
             target = eval(target)+1;
 //            e.target.parentElement.textContent = target;
-            
-            console.log(targetid.textContent);
-            
             async.favorite(targetid.textContent);
+            return;
         }
         
-        if(e.target.classList.contains("fa-star") && e.target.classList.contains("activeFav")){
-            e.target.classList.remove("activeFav");
-            var targetid =
-                e.target.parentElement.parentElement.parentElement.querySelector(".userTag");
-            var target = e.target.parentElement.textContent;
-//            e.target.parentElement.textContent = target;
-
-//            var targetid =
-//                e.target.parentElement.parentElement.parentElement.ch;
-//            console.log(targetid);
-
-            console.log(targetid.textContent);
-
-            async.favorite(targetid.textContent);
-        }
+        
     });
 
     posttxt.addEventListener("focusout", function(e){
@@ -245,8 +241,7 @@ async = {
         
         var src = "http://api.taegon.kim/posts/" + num +"/favorite";
         var xhr = new XMLHttpRequest();
-        var contentsend = document.querySelector(".posttxt").value;
-        
+
         console.log(src);
         xhr.open('POST', src, true);
         xhr.onreadystatechange = function() {
@@ -262,13 +257,12 @@ async = {
         
         var src = "http://api.taegon.kim/posts/" + num +"/favorite";
         var xhr = new XMLHttpRequest();
-        var contentsend = document.querySelector(".posttxt").value;
         
-        console.log(num);
         xhr.open('DELETE', "src", true);
         xhr.onreadystatechange = function() {
             if(this.readyState == 4) {
-                console.log(this.responseText);
+                var data = JSON.parse(xhr.responseText);
+                console.log(data);
             }
         }
     }
