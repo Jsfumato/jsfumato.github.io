@@ -1,0 +1,342 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 46px;
+    border-bottom: 1px solid #cacaca;
+    background-color: #ffffff;
+    
+    z-index: 10;
+}
+
+header img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    top: 10px;
+}
+
+header .box{
+    width: 900px;
+    height: 46px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+header .box ul{
+    margin: 0;
+    padding-left: 0;
+}
+
+header .box ul li{
+    color: #777777;
+    font-size: 22px;
+    font-weight: bold;
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    padding: 0 20px;
+    line-height: 42px;
+    
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.menuFocused, header .box ul li:hover{
+    border-bottom: 4px solid #0084B4;
+}
+
+
+body {
+    background-color: #f5f8fa;
+}
+
+main {
+    width: 900px;
+    margin: 46px auto 0 auto;
+    padding: 10px 0 0 0;
+}
+
+main .profile {
+    width: 290px;
+    height: 200px;
+    display: inline-block;
+    
+    border-radius: 5px;
+    
+    float: left;
+    background-color: #fff;
+    
+    border: 1px solid #e1e8ed;
+    box-sizing: border-box;
+}
+
+main .profile .bgcolor {
+    height: 90px;
+    width: 290px;
+    background-color: #E74C3C;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+    left: -1px;
+    top: -1px;
+}
+
+main .profile .myInfo {
+    position: relative;
+}
+
+main .profile .myInfo .outerImg {
+    position: relative;
+    top: -26px;
+    left: 8px;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 3px;
+    width: 72px;
+    height: 72px;
+    display: inline-block;
+}
+
+main .profile .myInfo img {
+    width: 72px;
+    height: 72px;
+    border-radius: 5px;
+}
+
+main .profile .myInfo .myValue {
+    font-weight: bold;
+    font-size: 15px;
+    color: #0084B4;
+}
+
+main .profile .myInfo .nametag {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 100px;
+}
+
+main .profile .myInfo .myname {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+main .profile .myInfo .mytag {
+    color: #aaa;
+    font-size: 15px;
+}
+
+main .profile .myInfo .mytag .info {
+    text-align: left;
+}
+
+main .profile .myInfo .info .nameinfo {
+    font-size: 12px;
+    color: #999;
+    display: block;
+}
+
+main .profile .myInfo .info .myValue {
+    display: block;
+}
+
+main .profile .myInfo .info {
+    position: absolute;
+    top: 70px;
+}
+
+main .profile .myInfo .info:nth-child(3) {
+    left: 10px;
+}
+
+main .profile .myInfo .info:nth-child(4) {
+    position: absolute;
+    left: 110px;
+}
+
+main .profile .myInfo .info:nth-child(5) {
+    position: absolute;
+    left: 210px;
+}
+
+main .posttab {
+    float: right;
+    width: 590px;
+    height: 60px;
+    border: 1px solid #BFE0EC;
+    background-color: #E5F2F7;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+    box-sizing: border-box;
+}
+
+main .posttab .innerbox {
+    width: 560px;
+    position: relative;
+    height: auto;
+}
+
+main .posttab .innerbox img {
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+    display: inline-block;
+    
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+main .posttab .innerbox .posttxt {
+    width: 520px;
+    height: 35px;
+    border: 1px solid #f5f8fa;
+    border-radius: 3px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 5px;
+    
+    position: absolute;
+    top: 10px;
+    left: 60px;
+    
+}
+
+
+/*focused post*/
+
+main .posttab.postFocused .innerbox .posttxt {
+    height: 100px;
+}
+
+main .posttab.postFocused {
+    height: 160px;
+    position: relative;
+}
+
+main .posttab.postFocused .postbox{
+    width: 140px;
+    height: 40px;
+    position: absolute;
+    top: 120px;
+    left: 450px;
+}
+
+.postbox span{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    
+    font-size: 15px;
+    color: #999;
+}
+
+.postbox button{
+    position: absolute;
+    top: 0;
+    left: 35px;
+    
+    width: 90px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 30px;
+    
+    background-color: #0084B4;
+    color: #fff;
+    
+    opacity: 0.3;
+}
+
+.postbox button.active{
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+main .timeline {
+    float: right;
+    width: 590px;
+    height: 1000px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #fff;
+
+    border: 1px solid #e1e8ed;
+    border-top: none;
+    
+    box-sizing: border-box;
+}
+
+main .timeline .content {
+/*    height: 200px;*/
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+/*    padding: 10px 0;*/
+}
+
+main .timeline .content:hover {
+    background-color: #f5f8fa;
+}
+
+main .timeline .content .userPic{
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+main .timeline .content .contentInfo {
+    margin-left: 60px;
+    padding-left: 0;
+    width: 520px;
+    margin-left: 70px;
+    padding-top: 10px;
+}
+main .timeline .content .contentInfo li{
+    list-style: none;
+    display: inline-block;
+}
+
+main .timeline .content .contentInfo .userId{
+    font-weight: 400;
+}
+
+main .timeline .content .contentInfo .userTag {
+    color: #aaa;
+}
+
+main .timeline .content .contentInfo .posttime {
+    color: #aaa;
+}
+
+main .timeline .content .contentInfo .contentTxt {
+    display: block;
+}
+
+main .timeline .content .interactive {
+    margin-left: 60px;
+    padding-left: 0;
+    width: 520px;
+    margin-left: 70px;
+/*    padding-top: 10px;*/
+}
+
+main .timeline .content .interactive li {
+    list-style: none;
+    display: inline-block;
+    color: #bbb;
+}
+
+main .timeline .content .interactive li i.activeFav{
+    color: yellow;
+}
