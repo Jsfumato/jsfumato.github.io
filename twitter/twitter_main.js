@@ -258,13 +258,16 @@ async = {
         var src = "http://api.taegon.kim/posts/" + num +"/favorite";
         var xhr = new XMLHttpRequest();
         
-        xhr.open('DELETE', "src", true);
+        console.log(src);
+        xhr.open('DELETE', src, true);
+        
         xhr.onreadystatechange = function() {
             if(this.readyState == 4) {
                 var data = JSON.parse(xhr.responseText);
-                console.log(data);
+                console.log(data.post.favorite);
             }
         }
+        xhr.send();
     }
     
     

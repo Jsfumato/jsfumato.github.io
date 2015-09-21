@@ -264,7 +264,6 @@ main .posttab.postFocused .postbox{
 main .timeline {
     float: right;
     width: 590px;
-    height: 1000px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: #fff;
